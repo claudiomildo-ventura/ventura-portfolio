@@ -21,10 +21,19 @@
   gap: 24px;
 }
 .wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  line-height: 1.15;
   font-family: 'Manrope', sans-serif;
   font-size: 29px;
   font-weight: 800;
   text-decoration: none;
+}
+.wordmark small {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
 }
 .wordmark span,
 h1 > span {

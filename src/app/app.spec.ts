@@ -14,11 +14,16 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('renders the company brand while retaining the professional profile', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('ClaudiomildoVentura');
+    expect(compiled.querySelector('h1')?.textContent).toContain('CV-ITConsulting');
+    expect(compiled.querySelector('header .wordmark')?.getAttribute('aria-label')).toBe(
+      'CV-IT Consulting, início',
+    );
+    expect(compiled.querySelector('footer')?.textContent).toContain('CV-IT Consulting');
+    expect(compiled.querySelector('#sobre')?.textContent).toContain('Claudiomildo de Lima Ventura');
   });
 
   it('links to the supplied LinkedIn profile', async () => {
