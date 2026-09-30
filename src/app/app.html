@@ -1,0 +1,297 @@
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a
+      class="wordmark"
+      href="#inicio"
+      aria-label="Claudiomildo Ventura, início"
+      (click)="closeMenu()"
+      >ventura<span>.</span></a
+    >
+    <button
+      class="icon-button menu-toggle"
+      type="button"
+      (click)="menuOpen.set(!menuOpen())"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="navigation"
+      [attr.aria-label]="menuOpen() ? 'Fechar menu' : 'Abrir menu'"
+      [title]="menuOpen() ? 'Fechar menu' : 'Abrir menu'"
+    >
+      <img [src]="menuOpen() ? 'icons/x.svg' : 'icons/menu.svg'" width="22" height="22" alt="" />
+    </button>
+    <nav
+      id="navigation"
+      aria-label="Navegação principal"
+      [class.is-open]="menuOpen()"
+      (keydown.escape)="closeMenu()"
+    >
+      <a href="#sobre" (click)="closeMenu()">Sobre</a>
+      <a href="#experiencia" (click)="closeMenu()">Experiência</a>
+      <a href="#competencias" (click)="closeMenu()">Competências</a>
+      <a href="#formacao" (click)="closeMenu()">Formação</a>
+      <a href="#contato" class="nav-contact" (click)="closeMenu()"
+        >Vamos conversar <img src="icons/arrow-up-right.svg" width="16" height="16" alt=""
+      /></a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo">
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> TECNOLOGIA, COM PROPÓSITO.</p>
+        <h1 id="hero-title">Claudiomildo<br />Ventura<span>.</span></h1>
+        <p class="hero-role">Technology Leader <span>/</span> Full-Stack Engineer</p>
+        <p class="hero-description">
+          Conecto estratégia, pessoas e código para transformar desafios de negócio em soluções que
+          evoluem.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#experiencia"
+            >Conheça minha trajetória <img src="icons/arrow-down.svg" width="18" height="18" alt=""
+          /></a>
+          <a class="text-link" [href]="linkedin" target="_blank" rel="noopener noreferrer"
+            >LinkedIn <img src="icons/arrow-up-right.svg" width="17" height="17" alt="" /><span
+              class="sr-only"
+            >
+              (abre em nova aba)</span
+            ></a
+          >
+        </div>
+      </div>
+      <figure class="portrait">
+        <img
+          class="portrait-image"
+          src="portrait.jpg"
+          alt="Avatar público de Claudiomildo Ventura no GitHub"
+          width="460"
+          height="460"
+          fetchpriority="high"
+        />
+        <figcaption><span>BRASIL</span><span>ENGENHARIA + LIDERANÇA</span></figcaption>
+      </figure>
+    </div>
+    <div class="container hero-bottom">
+      <span>ATUALMENTE NA <strong>AVANADE</strong></span
+      ><span>Java <i>/</i> Angular <i>/</i> Cloud <i>/</i> Arquitetura</span
+      ><a href="#sobre" aria-label="Ir para Sobre"
+        ><img src="icons/arrow-down.svg" width="19" height="19" alt=""
+      /></a>
+    </div>
+  </section>
+  <section class="section container about" id="sobre" aria-labelledby="about-title">
+    <div class="section-label">
+      <span>01 / SOBRE</span>
+      <h2 id="about-title">Visão de negócio.<br />Profundidade técnica.</h2>
+    </div>
+    <div class="about-content">
+      <p class="lead">
+        Da arquitetura à entrega, meu trabalho é aproximar o que o negócio precisa do que a
+        tecnologia pode realizar.
+      </p>
+      <p>
+        Sou Claudiomildo de Lima Ventura, profissional de tecnologia com experiência em sistemas
+        corporativos, modernização de aplicações e liderança de equipes multidisciplinares. Atuo no
+        desenvolvimento de soluções escaláveis, seguras e de alto desempenho.
+      </p>
+      <p>
+        Minha base em Sistemas de Informação, a especialização em cloud e segurança e o MBA em
+        Gestão de Projetos em andamento conectam execução técnica e direção estratégica.
+      </p>
+      <div class="facts">
+        <div>
+          <strong>15</strong><span>profissionais na equipe<br />liderada na Avanade</span>
+        </div>
+        <div>
+          <strong>Full-stack</strong><span>do backend à experiência<br />de quem usa</span>
+        </div>
+        <div>
+          <strong>4 idiomas</strong><span>conexões além<br />das fronteiras</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="experience-band" id="experiencia" aria-labelledby="experience-title">
+    <div class="container section">
+      <div class="section-heading">
+        <div class="section-label">
+          <span>02 / EXPERIÊNCIA</span>
+          <h2 id="experience-title">Uma trajetória de evolução.</h2>
+        </div>
+        <p>Sistemas complexos. Colaboração próxima.<br />Entregas que fazem diferença.</p>
+      </div>
+      <div class="timeline">
+        @for (experience of experiences; track experience.company) {
+          <article class="experience-row">
+            <div class="experience-meta">
+              <span class="timeline-dot" [class.current]="experience.current"></span>
+              <p class="eyebrow">{{ experience.period }}</p>
+              <h3>{{ experience.company }}</h3>
+              @if (experience.current) {
+                <span class="current-label">ATUAL</span>
+              }
+            </div>
+            <div class="experience-content">
+              <h4>{{ experience.role }}</h4>
+              <p>{{ experience.description }}</p>
+              @if (experience.detail) {
+                <p class="experience-detail">{{ experience.detail }}</p>
+              }
+              <ul class="tags" aria-label="Tecnologias e práticas">
+                @for (tag of experience.tags; track tag) {
+                  <li>{{ tag }}</li>
+                }
+              </ul>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section container" id="competencias" aria-labelledby="skills-title">
+    <div class="section-heading">
+      <div class="section-label">
+        <span>03 / COMPETÊNCIAS</span>
+        <h2 id="skills-title">Da estratégia ao código.</h2>
+      </div>
+      <p>Um repertório conectado,<br />não apenas uma lista de tecnologias.</p>
+    </div>
+    <div class="skills-grid">
+      @for (skill of skills; track skill.number) {
+        <article class="skill">
+          <span class="skill-number">{{ skill.number }}</span>
+          <h3>{{ skill.title }}</h3>
+          <p>{{ skill.text }}</p>
+          <ul class="tags">
+            @for (tag of skill.tags; track tag) {
+              <li>{{ tag }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </section>
+  <section class="education-band" id="formacao" aria-labelledby="education-title">
+    <div class="section container">
+      <div class="section-heading">
+        <div class="section-label">
+          <span>04 / FORMAÇÃO</span>
+          <h2 id="education-title">Aprender faz parte da entrega.</h2>
+        </div>
+      </div>
+      <div class="education-grid">
+        @for (item of education; track item.degree) {
+          <article>
+            <p class="eyebrow">{{ item.type }}</p>
+            <h3>{{ item.degree }}</h3>
+            <p>Centro Universitário Maurício de Nassau</p>
+            <span class="education-date">{{ item.date }}</span>
+          </article>
+        }
+      </div>
+      <div class="credentials-heading">
+        <h3>Certificações</h3>
+        <span>Conhecimento em constante expansão</span>
+      </div>
+      <div class="credentials-list" id="credentials">
+        @for (item of certifications; track item.title; let index = $index) {
+          <article
+            [class.extra-credential]="index >= 4"
+            [class.credential-hidden]="index >= 4 && !showAllCredentials()"
+          >
+            <img src="icons/badge-check.svg" width="20" height="20" alt="" />
+            <div>
+              <h4>{{ item.title }}</h4>
+              <span>{{ item.issuer }}</span>
+            </div>
+            <time>{{ item.date }}</time>
+          </article>
+        }
+      </div>
+      <button
+        class="text-link expand-button"
+        type="button"
+        [attr.aria-expanded]="showAllCredentials()"
+        aria-controls="credentials"
+        (click)="showAllCredentials.set(!showAllCredentials())"
+      >
+        {{ showAllCredentials() ? 'Mostrar menos' : 'Ver todas as 14 certificações'
+        }}<img
+          [src]="showAllCredentials() ? 'icons/minus.svg' : 'icons/plus.svg'"
+          width="18"
+          height="18"
+          alt=""
+        />
+      </button>
+      <details class="development">
+        <summary>
+          Desenvolvimento profissional <span>10 cursos e especializações</span
+          ><img src="icons/chevron-down.svg" width="20" height="20" alt="" />
+        </summary>
+        <div class="credentials-list">
+          @for (item of development; track item.title) {
+            <article>
+              <img src="icons/book-open.svg" width="20" height="20" alt="" />
+              <div>
+                <h4>{{ item.title }}</h4>
+                <span>{{ item.issuer }}</span>
+              </div>
+              <time>{{ item.date }}</time>
+            </article>
+          }
+        </div>
+      </details>
+    </div>
+  </section>
+  <section class="container languages" aria-labelledby="languages-title">
+    <h2 id="languages-title">Sem fronteiras.</h2>
+    <div class="language-grid">
+      @for (language of languages; track language.code) {
+        <div>
+          <span class="language-code">{{ language.code }}</span>
+          <div>
+            <h3>{{ language.name }}</h3>
+            <p>{{ language.level }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+  <section class="contact-band" id="contato" aria-labelledby="contact-title">
+    <div class="container section contact-inner">
+      <div>
+        <p class="eyebrow">05 / PRÓXIMA CONVERSA</p>
+        <h2 id="contact-title">Bons projetos começam<br />com uma conversa<span>.</span></h2>
+        <p>Vamos falar sobre tecnologia, liderança<br />e o próximo desafio?</p>
+      </div>
+      <div class="contact-actions">
+        <a class="button primary" [href]="linkedin" target="_blank" rel="noopener noreferrer"
+          ><img src="icons/briefcase-business.svg" width="20" height="20" alt="" /> Conectar no
+          LinkedIn <img src="icons/arrow-up-right.svg" width="18" height="18" alt="" /><span
+            class="sr-only"
+          >
+            (abre em nova aba)</span
+          ></a
+        ><a class="button outline" [href]="github" target="_blank" rel="noopener noreferrer"
+          ><img src="icons/code-xml.svg" width="20" height="20" alt="" /> Explorar GitHub
+          <img src="icons/arrow-up-right.svg" width="18" height="18" alt="" /><span class="sr-only">
+            (abre em nova aba)</span
+          ></a
+        ><button class="print-button" type="button" (click)="printResume()">
+          <img src="icons/printer.svg" width="17" height="17" alt="" /> Imprimir currículo
+        </button>
+      </div>
+    </div>
+  </section>
+  <div class="print-contact">
+    <p>LinkedIn: {{ linkedin }}</p>
+    <p>GitHub: {{ github }}</p>
+  </div>
+</main>
+<footer class="container footer">
+  <a class="wordmark" href="#inicio">ventura<span>.</span></a>
+  <p>© 2026 Claudiomildo de Lima Ventura</p>
+  <a class="text-link" href="#inicio"
+    >Voltar ao topo <img src="icons/arrow-up.svg" width="16" height="16" alt=""
+  /></a>
+</footer>
