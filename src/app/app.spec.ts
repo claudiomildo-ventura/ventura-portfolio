@@ -26,12 +26,16 @@ describe('App', () => {
     expect(compiled.querySelector('#sobre')?.textContent).toContain('Claudiomildo de Lima Ventura');
   });
 
-  it('links to the supplied LinkedIn profile', async () => {
+  it('keeps LinkedIn without GitHub links or printed contact details', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
-    const link = fixture.nativeElement.querySelector('.contact-actions a');
+    const root = fixture.nativeElement as HTMLElement;
+    const link = root.querySelector('.contact-actions a')!;
     expect(link.getAttribute('href')).toBe('https://www.linkedin.com/in/claudiomildo-ventura/');
     expect(link.getAttribute('rel')).toContain('noopener');
+    expect(root.querySelectorAll('a[href*="github.com"]').length).toBe(0);
+    expect(root.textContent).not.toContain('GitHub');
+    expect(root.querySelector('.print-contact')?.textContent).toContain('LinkedIn:');
   });
 
   it('opens the mobile menu and closes it after navigation', async () => {

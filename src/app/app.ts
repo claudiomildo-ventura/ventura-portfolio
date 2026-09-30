@@ -10,7 +10,6 @@ export class App {
   readonly menuOpen = signal(false);
   readonly showAllCredentials = signal(false);
   readonly linkedin = 'https://www.linkedin.com/in/claudiomildo-ventura/';
-  readonly github = 'https://github.com/claudiomildo-ventura';
   readonly experiences = [
     {
       company: 'Avanade',
